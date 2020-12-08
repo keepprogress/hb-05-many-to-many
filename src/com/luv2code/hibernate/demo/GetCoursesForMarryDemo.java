@@ -10,7 +10,7 @@ import com.luv2code.hibernate.demo.entity.InstructorDetail;
 import com.luv2code.hibernate.demo.entity.Review;
 import com.luv2code.hibernate.demo.entity.Student;
 
-public class AddCoursesForMarryDemo {
+public class GetCoursesForMarryDemo {
 
 	public static void main(String[] args) {
 
@@ -32,25 +32,12 @@ public class AddCoursesForMarryDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			// get the student mary from database
-			int studentId = 2;
+			// get the student  from database
+			int studentId = 1;
 			Student tempStudent = session.get(Student.class, studentId);
 			
 			System.out.println("\nLoaded student: " + tempStudent);
 			System.out.println("Courses: " + tempStudent.getCourses());
-			
-			// create more courses
-			Course tempCourse1 = new Course("Rubike's Cube - How to Speed Cube");
-			Course tempCourse2 = new Course("Atari 2600 - Game Development");
-			
-			
-			// add student to courses
-			tempCourse1.addStudent(tempStudent);
-			tempCourse2.addStudent(tempStudent);
-			
-			// save the courses
-			session.save(tempCourse1);
-			session.save(tempCourse2);
 			
 			// commit transaction
 			session.getTransaction().commit();
